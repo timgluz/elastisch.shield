@@ -7,7 +7,7 @@
 ;; the terms of this license.
 ;; You must not remove this notice, or any other, from this software.
 
-(ns clojurewerkz.elastisch.shield-fixtures
+(ns clojurewerkz.elastisch.shield.fixtures
   (:require [clojurewerkz.elastisch.shield :as shield]
             [clojurewerkz.elastisch.rest.index    :as idx]
             [clojurewerkz.elastisch.rest.document :as doc]

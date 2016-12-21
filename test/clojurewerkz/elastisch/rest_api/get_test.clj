@@ -11,11 +11,11 @@
   (:require [clojurewerkz.elastisch.rest.document :as doc]
             [clojurewerkz.elastisch.rest.index :as idx]
             [clojurewerkz.elastisch.query         :as q]
-            [clojurewerkz.elastisch.fixtures :as fx]
+            [clojurewerkz.elastisch.shield.fixtures :as fx]
             [clojurewerkz.elastisch.rest.response :refer :all]
             [clojure.test :refer :all]))
 
-(use-fixtures :each fx/reset-indexes)
+(use-fixtures :each fx/reset-indexes fx/init-pages-index fx/init-people-index)
 
 (def ^{:const true} index-name "people")
 (def ^{:const true} mapping-type "person")
