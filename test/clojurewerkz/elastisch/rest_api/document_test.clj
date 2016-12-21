@@ -1,7 +1,7 @@
 (ns clojurewerkz.elastisch.rest-api.document-test
   (:require [clojurewerkz.elastisch.shield :as shield]
             [clojurewerkz.elastisch.rest.document :as es.document]
-            [clojurewerkz.elastisch.fixtures :as fx]
+            [clojurewerkz.elastisch.shield.fixtures :as fx]
             clj-http.core
             [clojure.test :refer :all])
   (:import java.io.ByteArrayInputStream

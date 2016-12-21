@@ -9,7 +9,7 @@
 
 (ns clojurewerkz.elastisch.native-api.mappings-test
   (:require [clojurewerkz.elastisch.native.index :as idx]
-            [clojurewerkz.elastisch.fixtures     :as fx]
+            [clojurewerkz.elastisch.shield.fixtures     :as fx]
             [clojurewerkz.elastisch.test.helpers :as th]
             [clojurewerkz.elastisch.native.response :as resp]
             [clojure.test :refer :all]))

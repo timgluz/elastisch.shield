@@ -12,7 +12,7 @@
             [clojurewerkz.elastisch.native.document    :as doc]
             [clojurewerkz.elastisch.native.index       :as idx]
             [clojurewerkz.elastisch.query              :as q]
-            [clojurewerkz.elastisch.fixtures           :as fx]
+            [clojurewerkz.elastisch.shield.fixtures           :as fx]
             [clojurewerkz.elastisch.native.percolation :as pcl]
             [clojurewerkz.elastisch.test.helpers       :as th]
             [clojure.walk :as wlk]

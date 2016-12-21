@@ -15,7 +15,7 @@
               [response :refer [acknowledged?]]
               [conversion :as cnv]
               [conversion-stats :as cnv-stats]]
-            [clojurewerkz.elastisch.fixtures      :as fx]
+            [clojurewerkz.elastisch.shield.fixtures      :as fx]
             [clojurewerkz.elastisch.test.helpers  :as th]
             [clojure.test :refer :all]))
 

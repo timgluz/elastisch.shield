@@ -9,7 +9,7 @@
 
 (ns clojurewerkz.elastisch.rest-api.indices-test
   (:require [clojurewerkz.elastisch.rest.index :as idx]
-            [clojurewerkz.elastisch.fixtures :as fx]
+            [clojurewerkz.elastisch.shield.fixtures :as fx]
             [clojurewerkz.elastisch.rest.response :refer :all]
             [clojurewerkz.elastisch.rest.document :as doc]
             [clojure.test :refer :all]))

@@ -13,7 +13,7 @@
             [clojurewerkz.elastisch.rest.bulk          :as bulk]
             [clojurewerkz.elastisch.rest.index         :as idx]
             [clojurewerkz.elastisch.query              :as q]
-            [clojurewerkz.elastisch.fixtures           :as fx]
+            [clojurewerkz.elastisch.shield.fixtures           :as fx]
             [cheshire.core :as json]
             [clj-http.client :as http]
             [clojure.test :refer :all]

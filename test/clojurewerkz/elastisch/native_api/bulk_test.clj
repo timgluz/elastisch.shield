@@ -11,7 +11,7 @@
   (:require [clojurewerkz.elastisch.native.bulk     :refer :all]
             [clojurewerkz.elastisch.native.index    :as idx]
             [clojurewerkz.elastisch.native.document :as doc]
-            [clojurewerkz.elastisch.fixtures        :as fx]
+            [clojurewerkz.elastisch.shield.fixtures        :as fx]
             [clojurewerkz.elastisch.test.helpers    :as th]
             [clojurewerkz.elastisch.native.response :refer [created? source-from]]
             [clojure.test :refer :all]))

@@ -1,7 +1,7 @@
 (ns clojurewerkz.elastisch.native-api.suggest-test
   (:require [clojurewerkz.elastisch.native.document :as doc]
             [clojurewerkz.elastisch.native :as es]
-            [clojurewerkz.elastisch.fixtures :as fx]
+            [clojurewerkz.elastisch.shield.fixtures :as fx]
             [clojurewerkz.elastisch.test.helpers :as th]
             [clojure.test :refer :all]))
 

@@ -11,7 +11,7 @@
   (:require [clojurewerkz.elastisch.native.document :as doc]
             [clojurewerkz.elastisch.native.index    :as idx]
             [clojurewerkz.elastisch.query           :as q]
-            [clojurewerkz.elastisch.fixtures        :as fx]
+            [clojurewerkz.elastisch.shield.fixtures        :as fx]
             [clojurewerkz.elastisch.test.helpers    :as th]
             [clojure.test :refer :all]
             [clojurewerkz.elastisch.native.response :refer [count-from]]))

@@ -9,7 +9,7 @@
 
 (ns clojurewerkz.elastisch.rest-api.cluster-health-test
   (:require [clojurewerkz.elastisch.rest.admin :as admin]
-            [clojurewerkz.elastisch.fixtures :as fx]
+            [clojurewerkz.elastisch.shield.fixtures :as fx]
             [clojure.test :refer :all]))
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-people-index fx/prepopulate-tweets-index)

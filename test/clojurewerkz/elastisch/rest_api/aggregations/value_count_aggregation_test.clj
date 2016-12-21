@@ -11,7 +11,7 @@
   (:require [clojurewerkz.elastisch.rest.document :as doc]
             [clojurewerkz.elastisch.query         :as q]
             [clojurewerkz.elastisch.aggregation   :as a]
-            [clojurewerkz.elastisch.fixtures :as fx]
+            [clojurewerkz.elastisch.shield.fixtures :as fx]
             [clojure.test :refer :all]
             [clojurewerkz.elastisch.rest.response :refer :all]))
 

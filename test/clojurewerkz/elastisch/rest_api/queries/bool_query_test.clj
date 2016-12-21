@@ -10,7 +10,7 @@
 (ns clojurewerkz.elastisch.rest-api.queries.bool-query-test
   (:require [clojurewerkz.elastisch.rest.document :as doc]
             [clojurewerkz.elastisch.query    :as q]
-            [clojurewerkz.elastisch.fixtures :as fx]
+            [clojurewerkz.elastisch.shield.fixtures :as fx]
             [clojure.test :refer :all]
             [clojurewerkz.elastisch.rest.response :refer :all]))
 

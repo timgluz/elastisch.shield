@@ -13,7 +13,7 @@
               [document :as doc]
               [index :as idx]
               [response :refer [acknowledged?]]]
-            [clojurewerkz.elastisch.fixtures      :as fx]
+            [clojurewerkz.elastisch.shield.fixtures      :as fx]
             [clojurewerkz.elastisch.test.helpers  :as th]
             [clojure.test :refer :all]))
 

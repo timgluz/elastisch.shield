@@ -9,7 +9,7 @@
 
 (ns clojurewerkz.elastisch.rest-api.cluster-state-test
   (:require [clojurewerkz.elastisch.rest.admin :as admin]
-            [clojurewerkz.elastisch.fixtures :as fx]
+            [clojurewerkz.elastisch.shield.fixtures :as fx]
             [clojure.test :refer :all]))
 
 (let [conn (fx/connect-rest)]
