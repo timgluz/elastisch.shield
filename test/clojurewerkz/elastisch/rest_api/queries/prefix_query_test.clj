@@ -10,7 +10,6 @@
 (ns clojurewerkz.elastisch.rest-api.queries.prefix-query-test
   (:require [clojurewerkz.elastisch.rest.document :as doc]
             [clojurewerkz.elastisch.rest.index    :as idx]
-            [clojurewerkz.elastisch.rest :as rest]
             [clojurewerkz.elastisch.query         :as q]
             [clojurewerkz.elastisch.fixtures      :as fx]
             [clojurewerkz.elastisch.rest.response :refer :all]
@@ -18,7 +17,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-people-index fx/prepopulate-tweets-index)
 
-(let [conn (rest/connect)]
+(let [conn (fx/connect-rest)]
   (deftest ^{:rest true :query true} test-basic-prefix-query
     (let [index-name   "people"
           mapping-type "person"

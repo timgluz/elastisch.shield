@@ -3,7 +3,8 @@
   :dependencies [[org.elasticsearch.plugin/shield "2.3.3"]]
   :profiles {:1.8 {:dependencies [[org.clojure/clojure "1.8.0"]]}
              :master {:dependencies [[org.clojure/clojure "1.9.0-master-SNAPSHOT"]]}
-             :dev {:dependencies [[clojurewerkz/elastisch "3.0.0-beta1"]]
+             :dev {:dependencies [[timgluz/elastisch "3.0.0-beta2"]
+																	[clj-time "0.12.2"]]
                    :resource-paths ["test/resources"]
                    :plugins [[codox "0.10.0"]]
                    :codox {:source-paths ["src/clojure"]}}}
