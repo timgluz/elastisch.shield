@@ -8,13 +8,17 @@
 ;; You must not remove this notice, or any other, from this software.
 
 (ns clojurewerkz.elastisch.fixtures
-  (:require [clojurewerkz.elastisch.rest          :as es]
+  (:require [clojurewerkz.elastisch.shield :as shield]
             [clojurewerkz.elastisch.rest.index    :as idx]
             [clojurewerkz.elastisch.rest.document :as doc]
             [clojure.test :refer :all]
             [clojurewerkz.elastisch.rest.response :refer [created?]]))
 
-(def conn (es/connect))
+(def es-admin {:username "es_admin" :password "toor123"})
+(defn connect-rest []
+  (shield/connect-rest (:username es-admin) (:password es-admin)))
+
+(def conn (connect-rest))
 
 (defn reset-indexes*
   []

@@ -10,7 +10,6 @@
 (ns clojurewerkz.elastisch.rest-api.aggregations.stats-aggregation-test
   (:refer-clojure :exclude [replace])
   (:require [clojurewerkz.elastisch.rest.document :as doc]
-            [clojurewerkz.elastisch.rest :as rest]
             [clojurewerkz.elastisch.query         :as q]
             [clojurewerkz.elastisch.aggregation   :as a]
             [clojurewerkz.elastisch.fixtures :as fx]
@@ -19,7 +18,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-people-index)
 
-(let [conn (rest/connect)]
+(let [conn (fx/connect-rest)]
   (deftest ^{:rest true :aggregation true} test-stats-aggregation
     (let [index-name   "people"
           mapping-type "person"

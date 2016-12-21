@@ -9,7 +9,6 @@
 
 (ns clojurewerkz.elastisch.rest-api.aggregations.date-range-aggregation-test
   (:require [clojurewerkz.elastisch.rest.document :as doc]
-            [clojurewerkz.elastisch.rest :as rest]
             [clojurewerkz.elastisch.query         :as q]
             [clojurewerkz.elastisch.aggregation   :as a]
             [clojurewerkz.elastisch.fixtures :as fx]
@@ -18,7 +17,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-people-index)
 
-(let [conn (rest/connect)]
+(let [conn (fx/connect-rest)]
   (deftest ^{:rest true :aggregation true} test-date-range-aggregation
     (let [index-name   "people"
           mapping-type "person"
