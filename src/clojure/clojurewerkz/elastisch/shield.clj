@@ -68,7 +68,7 @@
 (defn init-role
   "initializes a new native Shield role"
   [clusters shield-indices]
-  (->ShieldRole clusters 
+  (->ShieldRole clusters
                 (vec (map #(map->ShieldRoleIndex %) shield-indices))
                 []))
 
@@ -108,7 +108,6 @@
   [^Connection rest-conn]
   (rest-client/get rest-conn (rest-client/url-with-path rest-conn "_license")))
 
-
 (defn update-license
   "uploads or re-uploads a the ES license"
   [^Connection rest-conn ^String license-content]
@@ -123,7 +122,7 @@
 (defn add-user
   "creates a new native user.
   Params:
-  @rest-client - initialized elastisch shielded REST-client 
+  @rest-client - initialized elastisch shielded REST-client
   @username  - string, 1 < len < 30
   @password  - string, 6 < len
   @roles     - vector, 1 < len"
@@ -175,7 +174,7 @@
   ([^String uri ^String username ^String password]
     (connect-rest uri username password {}))
   ([^String uri ^String username ^String password ^IPersistentMap opts]
-    (rest-client/connect uri 
+    (rest-client/connect uri
                          (merge {:basic-auth [username password]} opts))))
 
 (defn ^Client connect-native
@@ -193,47 +192,3 @@
          (.addTransportAddress tc (cnv/->socket-transport-address host port)))
        tc)))
 
-(comment
-  ;example workflow
-
-  (require '[clojurewerkz.elastisch.shield :as shield] :reload-all)
-  
-  (def shield-user (shield/init-user "es_admin" "toor123"))
-  ;using shield end-points
-  (println shield-user)
-  (def test-user (shield/init-user "es_test" "qwerty123" ["test"]))
-
-  ;using rest-client to make authorized calls
-  (def srconn (shield/connect-rest
-                "http://127.0.0.1:9200"
-                (:username shield-user)
-                (:password shield-user)))
-  (require '[clojurewerkz.elastisch.rest.admin :as radmin])
-  (radmin/cluster-health srconn)
-
-  (shield/info srconn)
-  (shield/authenticate srconn)
-  (shield/clear-cache srconn)
-  (shield/get-license srconn)
-
-  (require '[clojure.java.io :as io])
-  (def lic-file (slurp "resources/elastisch-shield-license-v2.json"))
-  (shield/update-license srconn lic-file)
-
-  (shield/add-user srconn shield-user test-user)
-  (shield/get-users srconn)
-  (shield/get-users srconn ["es_test"]) 
-  (shield/delete-user srconn (:username test-user)) 
-
-  
-  ;;using native client to make authorized calls
-  (def sconn (shield/connect-native  [["127.0.0.1" 9300]]
-                                     (:username shield-user)
-                                     (:password shield-user)
-                                     {"cluster.name" "shield-test"}))
-
-  (require '[clojurewerkz.elastisch.native.index :as index])
-  (index/create sconn "testindex")
-  (index/stats sconn)
-
-  )
