@@ -9,7 +9,6 @@
 
 (ns clojurewerkz.elastisch.rest-api.count-test
   (:require [clojurewerkz.elastisch.rest.document :as doc]
-            [clojurewerkz.elastisch.rest :as rest]
             [clojurewerkz.elastisch.rest.index    :as idx]
             [clojurewerkz.elastisch.query         :as q]
             [clojurewerkz.elastisch.fixtures :as fx]
@@ -22,7 +21,7 @@
 ;; count
 ;;
 
-(let [conn (rest/connect)]
+(let [conn (fx/connect-rest)]
   (deftest ^{:rest true} test-count-with-the-default-query
   (let [index-name "people"
         index-type "person"]

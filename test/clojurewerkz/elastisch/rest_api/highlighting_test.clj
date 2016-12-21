@@ -9,7 +9,6 @@
 
 (ns clojurewerkz.elastisch.rest-api.highlighting-test
   (:require [clojurewerkz.elastisch.rest.document :as doc]
-            [clojurewerkz.elastisch.rest :as rest]
             [clojurewerkz.elastisch.rest.index :as idx]
             [clojurewerkz.elastisch.query :as q]
             [clojurewerkz.elastisch.fixtures :as fx]
@@ -19,7 +18,7 @@
 
 (use-fixtures :each fx/reset-indexes)
 
-(let [conn (rest/connect)]
+(let [conn (fx/connect-rest)]
   (deftest ^{:rest true} test-highlighting-with-all-defaults
     (let [index "articles"
           type  "article"]

@@ -10,7 +10,6 @@
 (ns clojurewerkz.elastisch.rest-api.analyze-test
   (:refer-clojure :exclude [replace])
   (:require [clojurewerkz.elastisch.rest.document :as doc]
-            [clojurewerkz.elastisch.rest     :as rest]
             [clojurewerkz.elastisch.rest.index    :as idx]
             [clojurewerkz.elastisch.query    :as q]
             [clojurewerkz.elastisch.fixtures :as fx]
@@ -22,7 +21,7 @@
 ;; Analysis
 ;;
 
-(let [conn (rest/connect)]
+(let [conn (fx/connect-rest)]
   (deftest ^{:rest true} test-analyze
     (is (= {:tokens
             [{:token "foo",

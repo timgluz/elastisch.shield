@@ -8,8 +8,7 @@
 ;; You must not remove this notice, or any other, from this software.
 
 (ns clojurewerkz.elastisch.rest-api.indices-test
-  (:require [clojurewerkz.elastisch.rest :as rest]
-            [clojurewerkz.elastisch.rest.index :as idx]
+  (:require [clojurewerkz.elastisch.rest.index :as idx]
             [clojurewerkz.elastisch.fixtures :as fx]
             [clojurewerkz.elastisch.rest.response :refer :all]
             [clojurewerkz.elastisch.rest.document :as doc]
@@ -17,7 +16,7 @@
 
 (use-fixtures :each fx/reset-indexes)
 
-(let [conn (rest/connect)]
+(let [conn (fx/connect-rest)]
   (deftest ^{:rest true :indexing true} test-create-an-index-without-mappings-or-settings
     (let [response (idx/create conn "elastisch-index-without-mappings")]
       (is (acknowledged? response))

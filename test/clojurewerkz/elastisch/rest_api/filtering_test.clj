@@ -9,7 +9,6 @@
 
 (ns clojurewerkz.elastisch.rest-api.filtering-test
   (:require [clojurewerkz.elastisch.rest.document :as doc]
-            [clojurewerkz.elastisch.rest :as rest]
             [clojurewerkz.elastisch.rest.index :as idx]
             [clojurewerkz.elastisch.query :as q]
             [clojurewerkz.elastisch.fixtures :as fx]
@@ -18,7 +17,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-people-index fx/prepopulate-articles-index fx/prepopulate-tweets-index)
 
-(let [conn (rest/connect)]
+(let [conn (fx/connect-rest)]
   (deftest ^{:rest true} test-term-filtering
     (let [index-name   "people"
           mapping-type "person"

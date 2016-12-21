@@ -10,7 +10,6 @@
 (ns clojurewerkz.elastisch.rest-api.indexing-test
   (:require [clojurewerkz.elastisch.rest.document :as doc]
             [clojurewerkz.elastisch.rest.index :as idx]
-            [clojurewerkz.elastisch.rest :as rest]
             [clojurewerkz.elastisch.query :as q]
             [clojurewerkz.elastisch.fixtures :as fx]
             [clojurewerkz.elastisch.rest.response :refer [created? acknowledged? conflict? hits-from any-hits? no-hits?]]
@@ -23,7 +22,7 @@
 (def ^{:const true} index-name "people")
 (def ^{:const true} index-type "person")
 
-(let [conn (rest/connect)]
+(let [conn (fx/connect-rest)]
   (deftest ^{:rest true :indexing true} test-put-with-autocreated-index
     (let [id         "1"
           document   fx/person-jack

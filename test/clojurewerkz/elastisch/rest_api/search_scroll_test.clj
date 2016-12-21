@@ -10,7 +10,6 @@
 (ns clojurewerkz.elastisch.rest-api.search-scroll-test
   (:require [clojurewerkz.elastisch.rest.document :as doc]
             [clojurewerkz.elastisch.rest.index :as idx]
-            [clojurewerkz.elastisch.rest :as rest]
             [clojurewerkz.elastisch.query :as q]
             [clojurewerkz.elastisch.fixtures :as fx]
             [clojurewerkz.elastisch.rest.response :refer :all]
@@ -18,7 +17,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-articles-index)
 
-(let [conn (rest/connect)]
+(let [conn (fx/connect-rest)]
   (defn fetch-scroll-results
     [scroll-id results]
     (let [scroll-response (doc/scroll conn scroll-id {:scroll "1m"})

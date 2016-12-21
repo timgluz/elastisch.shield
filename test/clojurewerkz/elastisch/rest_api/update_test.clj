@@ -10,7 +10,6 @@
 (ns clojurewerkz.elastisch.rest-api.update-test
   (:require [clojurewerkz.elastisch.rest.document :as doc]
             [clojurewerkz.elastisch.rest.index    :as idx]
-            [clojurewerkz.elastisch.rest :as rest]
             [clojurewerkz.elastisch.query         :as q]
             [clojurewerkz.elastisch.fixtures      :as fx]
             [clojure.stacktrace :as s]
@@ -19,7 +18,7 @@
 
 (use-fixtures :each fx/reset-indexes)
 
-(let [conn (rest/connect)]
+(let [conn (fx/connect-rest)]
   (deftest ^{:rest true} test-replacing-documents
     (let [index-name   "people"
           mapping-type "person"
