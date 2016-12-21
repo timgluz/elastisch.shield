@@ -7,7 +7,7 @@
 ;; the terms of this license.
 ;; You must not remove this notice, or any other, from this software.
 
-(ns clojurewerkz.elastisch.fixtures
+(ns clojurewerkz.elastisch.shield-fixtures
   (:require [clojurewerkz.elastisch.shield :as shield]
             [clojurewerkz.elastisch.rest.index    :as idx]
             [clojurewerkz.elastisch.rest.document :as doc]
@@ -288,6 +288,13 @@
                :state   "CA"
                :city    "San Francisco"}})
 
+
+(defn init-people-index
+  [f]
+  (let [index-name "people"]
+    (idx/create conn index-name {:mappings people-mapping})
+    (idx/refresh conn index-name)
+    (f)))
 
 (defn prepopulate-people-index
   [f]
