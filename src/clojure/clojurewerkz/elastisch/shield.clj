@@ -184,12 +184,12 @@
   ([^IPersistentList pairs ^String username ^String password]
     (connect-native pairs username password {}))
   ([^IPersistentList pairs ^String username ^String password ^IPersistentMap settings]
-     (let [settings-with-auth (assoc settings "shield.user" (str username ":" password))
-           tcb (doto (TransportClient/builder)
-                 (.addPlugin ShieldPlugin)
-                 (.settings (cnv/->settings settings-with-auth)))
-           tc (.build tcb)]
-       (doseq [[host port] pairs]
-         (.addTransportAddress tc (cnv/->socket-transport-address host port)))
-       tc)))
+   	(let [settings-with-auth (assoc settings "shield.user" (str username ":" password))
+				  tcb (doto (TransportClient/builder)
+							  (.addPlugin ShieldPlugin)
+							  (.settings (cnv/->settings settings-with-auth)))
+				  tc (.build tcb)]
+		  (doseq [[host port] pairs]
+			  (.addTransportAddress tc (cnv/->socket-transport-address host port)))
+		  tc)))
 

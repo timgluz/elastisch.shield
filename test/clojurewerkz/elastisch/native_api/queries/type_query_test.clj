@@ -17,7 +17,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-tweets-index)
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest ^{:query true :native true} test-basic-type-query
     (let [response (doc/search conn "tweets" "tweet"
                                {:query (q/type "tweet")})]

@@ -14,9 +14,16 @@
             [clojure.test :refer :all]
             [clojurewerkz.elastisch.rest.response :refer [created?]]))
 
+(def cluster-name "shield-test")
 (def es-admin {:username "es_admin" :password "toor123"})
 (defn connect-rest []
   (shield/connect-rest (:username es-admin) (:password es-admin)))
+
+(defn connect-native []
+  (shield/connect-native [["127.0.0.1" 9300]]
+                         (:username es-admin)
+                         (:password es-admin)
+                         {"cluster.name" cluster-name}))
 
 (def conn (connect-rest))
 
@@ -25,7 +32,6 @@
   ;; deletes all indices
   (try
     (idx/delete conn)
-    (idx/delete-template conn "accounts")
     (catch Exception e
       (println "fixtures: failed to delete indexes")
       (.printStackTrace e))))
@@ -33,6 +39,7 @@
 (defn reset-indexes
   [f]
   (reset-indexes*)
+  (Thread/sleep 1000) ;to relax pressure on ES when running full test-set
   (f)
   (reset-indexes*))
 
@@ -240,17 +247,15 @@
                :city    "Moscow"}})
 
 (def test-template1
-    {:template
-      {:filter
-        {:term
-          {:username "{{username}}"}}}})
+  {:template
+    {:filter {:term {:username "{{username}}"}}}})
 
 
 (def test-template2
-    {:template
-      {:filter
-        {:term
-          {:username "{{username}}"}} :_source ["username"]}})
+  {:template
+    {:filter
+      {:term
+        {:username "{{username}}"}} :_source ["username"]}})
 
 (def tweet2
   {:username  "ifesdjeen"
@@ -299,6 +304,13 @@
   [f]
   (let [index-name "people"]
     (idx/create conn index-name {:mappings people-mapping})
+    (idx/refresh conn index-name)
+    (f)))
+
+(defn init-tweets-index
+  [f]
+  (let [index-name "tweets"]
+    (idx/create conn index-name {:mappings tweets-mapping})
     (idx/refresh conn index-name)
     (f)))
 

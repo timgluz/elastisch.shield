@@ -16,7 +16,7 @@
             [clojurewerkz.elastisch.native.response :refer [created? source-from]]
             [clojure.test :refer :all]))
 
-(use-fixtures :each fx/reset-indexes)
+(use-fixtures :each fx/reset-indexes fx/init-people-index)
 
 (def ^{:const true} index-name "people")
 (def ^{:const true} index-type "person")
@@ -29,7 +29,7 @@
                            (:status m))) xs))
   (is (every? created? xs)))
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest ^{:native true :indexing true} test-bulk-indexing
     (let [person fx/person-jack
           for-index (assoc person :_type index-type :_index index-name)

@@ -18,7 +18,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-articles-index fx/prepopulate-tweets-index)
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest ^{:query true :native true} test-trailing-wildcard-query-with-nested-fields
     (let [response     (doc/search conn "articles" "article" {:query (q/wildcard {"latest-edit.author" "Thorw*"})})
           hits         (hits-from response)]

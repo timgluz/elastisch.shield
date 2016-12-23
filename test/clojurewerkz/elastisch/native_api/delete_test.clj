@@ -17,9 +17,9 @@
             [clojurewerkz.elastisch.native.response :refer [count-from found?]]
             [clojure.test :refer :all]))
 
-(use-fixtures :each fx/reset-indexes)
+(use-fixtures :each fx/reset-indexes fx/init-people-index)
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest ^{:native true} test-delete-when-a-document-exists
   (let [id           "1"
         index-name   "people"

@@ -19,7 +19,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-people-index)
 
-(let [conn (th/connect-native-client)
+(let [conn (fx/connect-native)
       index-name "people"]
   (deftest ^{:indexing true :native true} test-closing-and-opening-existing-index
     (testing "it should close people's index"

@@ -20,7 +20,7 @@
 
 (use-fixtures :each fx/reset-indexes)
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest ^{:native true} test-highlighting-with-all-defaults
     (let [index "articles"
           type  "article"]

@@ -19,7 +19,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-articles-index fx/prepopulate-tweets-index)
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest ^{:query true :native true} test-query-string-query
   (let [index-name   "articles"
         mapping-type "article"

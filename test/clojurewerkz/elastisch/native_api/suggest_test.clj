@@ -5,7 +5,7 @@
             [clojurewerkz.elastisch.test.helpers :as th]
             [clojure.test :refer :all]))
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (use-fixtures :each fx/reset-indexes
                       fx/prepopulate-people-suggestion
                       fx/prepopulate-people-category-suggestion

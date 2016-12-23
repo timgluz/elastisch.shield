@@ -19,7 +19,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-people-index fx/prepopulate-tweets-index)
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest ^{:query true :native true} test-basic-term-query-with-person-mapping
     (let [result (doc/search conn "people" "person" {:query (q/term :biography "avoid")})]
       (is (any-hits? result))

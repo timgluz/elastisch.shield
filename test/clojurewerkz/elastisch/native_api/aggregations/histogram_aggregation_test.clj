@@ -18,7 +18,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-people-index)
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest ^{:native true :aggregation true} test-histogram-aggregation
     (let [index-name   "people"
           mapping-type "person"

@@ -20,7 +20,7 @@
 (use-fixtures :each fx/reset-indexes fx/prepopulate-people-index
                     fx/prepopulate-articles-index fx/prepopulate-tweets-index)
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest ^{:native true} test-term-filtering
     (let [index-name   "people"
           mapping-type "person"

@@ -9,7 +9,7 @@
 
 (use-fixtures :each fx/reset-indexes fx/prepopulate-articles-index)
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest ^{:native true :aggregation true} test-top-hits-aggregation
     (let [index-name   "articles"
           mapping-type "article"

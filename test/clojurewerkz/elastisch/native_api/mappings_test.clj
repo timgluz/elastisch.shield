@@ -16,7 +16,7 @@
 
 (use-fixtures :each fx/reset-indexes)
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest ^{:native true} test-updating-index-mapping
     (let [index    "people1"
           mapping  fx/people-mapping

@@ -18,7 +18,7 @@
 
 (use-fixtures :each fx/reset-indexes)
 
-(let [conn (th/connect-native-client)]
+(let [conn (fx/connect-native)]
   (deftest test-upserting-documents
     (let [index-name "people"
           index-type "person"
