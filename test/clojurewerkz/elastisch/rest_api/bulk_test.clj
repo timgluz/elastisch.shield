@@ -20,7 +20,7 @@
             [clojurewerkz.elastisch.rest.response :refer [created? acknowledged? conflict? hits-from any-hits? no-hits?]]
             [clojure.string :refer [join]]))
 
-(use-fixtures :each fx/reset-indexes)
+(use-fixtures :each fx/reset-indexes fx/init-people-index)
 
 (def ^{:const true} index-name "people")
 (def ^{:const true} index-type "person")
@@ -50,7 +50,7 @@
            index-type :_type
            first-id   :_id)))
 
-  #_(deftest ^{:rest true :indexing true} test-bulk-with-index-and-type
+  (deftest ^{:rest true :indexing true} test-bulk-with-index-and-type
     (let [document          fx/person-jack
           insert-operations (bulk/bulk-index (repeat 10 document))
           response          (bulk/bulk-with-index-and-type conn index-name index-type
@@ -67,7 +67,7 @@
            index-type :_type
            first-id   :_id)))
 
-  #_(deftest ^{:rest true :indexing true} test-bulk-delete
+  (deftest ^{:rest true :indexing true} test-bulk-delete
     (let [insert-ops      (bulk/bulk-index (repeat 10 fx/person-jack))
           response        (bulk/bulk-with-index-and-type conn index-name index-type insert-ops {:refresh true})
           docs            (->> response :items (map :create) )
@@ -79,7 +79,7 @@
       (are-all-successful (->> response :items (map :create)))
       (is (= 0 (:count (doc/count conn index-name index-type))))))
 
-  #_(deftest ^{:rest true :indexing true} test-bulk-create
+  (deftest ^{:rest true :indexing true} test-bulk-create
     (let [document          fx/person-jack
           for-index         (assoc document :_type index-type :_id "sampleid")
           create-operations (bulk/bulk-create (repeat 10 for-index))

@@ -175,10 +175,7 @@
     (connect-rest uri username password {}))
   ([^String uri ^String username ^String password ^IPersistentMap opts]
     (rest-client/connect uri
-                         (merge {:basic-auth [username password]
-																 ;:throw-exceptions false
-																 ;:debug true
-																}
+                         (merge {:basic-auth [username password]}
 																opts))))
 
 (defn ^Client connect-native
