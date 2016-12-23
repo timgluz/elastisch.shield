@@ -1,30 +1,28 @@
 jdk:
   - oraclejdk8
-
 language: clojure
 lein: lein2
 
 env:
-	- ES_VERSION="2.3.3"
+  - ES_VERSION=2.3.3
 
 before_install:
-	- docker pull elasticsearch:2.3.3
+  - docker pull elasticsearch:2.3.3
   - docker build --rm=true -t elastisch/shield:2.3.3 ./resources/
 
 
 install:
-	- docker run -d -p 127.0.0.1:9200:9200 -p 127.0.0.1:9300:9300 --name="shield-test" elastisch/shield:2.3.3
-	- lein deps
+  - docker run -d -p 127.0.0.1:9200:9200 -p 127.0.0.1:9300:9300 --name="shield-test" elastisch/shield:2.3.3
+  - lein deps
 
 before_script:
-	- sleep 10
+  - sleep 10
 
 script:
-	- docker logs shield-test
+  - docker logs shield-test
   - curl -vvvv -u es_admin:toor123 http://127.0.0.1:9200/_stats
   - lein all test :ci
 
 after_script:
-	- docker stop shield-test
+  - docker stop shield-test
   - docker rm shield-test
-
