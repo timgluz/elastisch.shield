@@ -175,7 +175,11 @@
     (connect-rest uri username password {}))
   ([^String uri ^String username ^String password ^IPersistentMap opts]
     (rest-client/connect uri
-                         (merge {:basic-auth [username password]} opts))))
+                         (merge {:basic-auth [username password]
+																 ;:throw-exceptions false
+																 ;:debug true
+																}
+																opts))))
 
 (defn ^Client connect-native
   "Connects to one or more shielded Elasticsearch cluster nodes using
