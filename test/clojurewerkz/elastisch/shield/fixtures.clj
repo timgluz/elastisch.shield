@@ -39,7 +39,6 @@
 (defn reset-indexes
   [f]
   (reset-indexes*)
-  (Thread/sleep 1000) ;to relax pressure on ES when running full test-set
   (f)
   (reset-indexes*))
 
