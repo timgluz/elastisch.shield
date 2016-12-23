@@ -6,10 +6,12 @@ lein: lein2
 env:
   - ES_VERSION=2.3.3
 
+services:
+  - docker
+
 before_install:
   - docker pull elasticsearch:2.3.3
   - docker build --rm=true -t elastisch/shield:2.3.3 ./resources/
-
 
 install:
   - docker run -d -p 127.0.0.1:9200:9200 -p 127.0.0.1:9300:9300 --name="shield-test" elastisch/shield:2.3.3
